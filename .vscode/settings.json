@@ -3,5 +3,6 @@
         "activityBar.background": "#222F38",
         "titleBar.activeBackground": "#30424E",
         "titleBar.activeForeground": "#FBFCFC"
-    }
+    },
+    "workbench.preferredHighContrastColorTheme": "Abyss"
 }
