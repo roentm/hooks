@@ -1,10 +1,10 @@
 import './App.css';
-import AppParent from './parentComps/appParent';
+import AppDate from './parentComps/appDate';
 
 function App() {
   return (
     <div className="container">
-     <AppParent />
+     <AppDate />
     </div>
   );
 }
