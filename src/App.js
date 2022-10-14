@@ -1,9 +1,10 @@
 import './App.css';
+import AppParent from './parentComps/appParent';
 
 function App() {
   return (
-    <div className="App">
-     <h1 className='display-4'>React</h1>
+    <div className="container">
+     <AppParent />
     </div>
   );
 }
