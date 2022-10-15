@@ -3,8 +3,8 @@ import InputDate from "./inputDate"
 import ShowDate from "./showDate"
 
 export default function AppDate() {
-  const [deadline,setDeadline]=useState(Date())
-
+  
+  const [deadline,setDeadline]=useState("2023-10-15")
   const changeDate =(_date)=>{
     setDeadline(_date)
   }
