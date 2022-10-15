@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import AppHome from './comps/AppHome';
+import AppHome from './comps/appHome';
 
 function App() {
   return (
