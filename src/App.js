@@ -1,10 +1,12 @@
+import React from 'react';
 import './App.css';
+import AppHome from './comps/AppHome';
 
 function App() {
   return (
-    <div className="App">
-     <h1 className='display-4'>React</h1>
-    </div>
+    <React.Fragment>
+      <AppHome />
+    </React.Fragment>
   );
 }
 
