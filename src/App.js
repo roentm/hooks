@@ -1,5 +1,5 @@
 import './App.css';
-import AppDate from './parentComps/appDate';
+import AppDate from './parentComps/dateComps/appDate';
 
 function App() {
   return (
