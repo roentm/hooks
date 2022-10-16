@@ -1,11 +1,11 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-export default function VodInput() {
+export default function VodInput(props) {
     const inputRef=useRef();
+    const [input,setInput]=useState("");
 
-    const searchAPI= ()=>{
-        props.doAPI('s='+useRef.current.value);
-    }
+    useEffect( (input)=>{props.doAPI("s="+input)},[input])
+   
 
   return (
     <header className='container-fluid bg-dark p-2'>
@@ -16,7 +16,7 @@ export default function VodInput() {
                 </div>
                 <nav className='d-flex col-md-4'>
                     <input ref={inputRef} placeholder='Search...' type='search' className='form-control' />
-                    <button className='btn btn-warning ms-1' onClick={searchAPI}>Search</button>
+                    <button className='btn btn-warning ms-1' onClick={()=>{setInput(inputRef.current.value)}}>Search</button>
                 </nav>
             </div>
 
