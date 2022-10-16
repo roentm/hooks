@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Footer from './footer'
 import VodInput from './vodInput'
 import VodList from './vodList'
@@ -8,6 +8,8 @@ import {urlAPI} from '../const.js'
 import "./compsCSS/home.css"
 export default function AppHome() {
 
+  const [movieArr,setMovieArr]=useState([]);
+
   useEffect(()=>{},[]);
   
   const doAPI=async(_searchQ)=>{
@@ -15,7 +17,7 @@ export default function AppHome() {
       const resp= await fetch(urlAPI+_searchQ);
       const data= await resp.json();
 
-      return(data);
+      setMovieArr(data.Search);
     }
     catch(err){
       console.log(err)
@@ -25,7 +27,7 @@ export default function AppHome() {
     <React.Fragment>
         <VodStrip/>
         <VodInput doAPI={doAPI} />
-        <VodList />
+        <VodList movieArr={movieArr} />
         <Footer />
     </React.Fragment>
   )
