@@ -1,0 +1,1 @@
+export const urlAPI = 'http://www.omdbapi.com/?apikey=c2da71ea&'

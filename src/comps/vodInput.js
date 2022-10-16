@@ -10,6 +10,9 @@ export default function VodInput() {
                 </div>
                 <nav className='d-flex col-md-4'>
                     <input placeholder='Search...' type='search' className='form-control' />
+                    <select>
+                        
+                    </select>
                     <button className='btn btn-warning ms-1'>Search</button>
 
                 </nav>
