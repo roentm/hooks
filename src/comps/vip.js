@@ -1,8 +1,9 @@
 import React from 'react'
-import {useParams} from 'react-router-dom';
+import {useParams,useSearchParams} from 'react-router-dom';
 
 export default function VIP() {
     const params=useParams();
+    const [query]=useSearchParams();
   return (
     <div>
         <h2>
@@ -11,6 +12,8 @@ export default function VIP() {
         <h3>{vip_ar[params.id].name}</h3>
         <h4>Money: {vip_ar[params.id].worth}</h4>
         <h4>Company: {vip_ar[params.id].source}</h4>
+        {/* ?page= */}
+        <h5>Page: {query.get("page")}</h5>
     </div>
     
   )
