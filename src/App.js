@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
 import AppHome from './comps/appHome';
 import About from './comps/about';
 import Gallery from './comps/gallery';
+import VIP from './comps/vip';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route index element={<AppHome/>} />
         <Route path="/about" element={<About/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
+        <Route path="/vip/:id" element={<VIP/>}/>
         <Route path="/*" element={
           <div className='container-fluid'>
             <div className='container mx-auto'>
