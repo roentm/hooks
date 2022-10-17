@@ -14,7 +14,7 @@ function App() {
         <Route path="/" element={<AppHome/>} />
         <Route path="/about" element={<About/>}/>
         <Route path="/gallery" element={<Gallery/>}/>
-        <Route path="/**" element={
+        <Route path="/*" element={
           <div className='container-fluid'>
             <div className='container mx-auto'>
               <h1 className='text-danger display-2'>
