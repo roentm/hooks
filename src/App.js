@@ -8,7 +8,9 @@ function App() {
   return (
     <BrowserRouter>
       <header className='border p-2'>
-        <h2>header</h2>
+        <Link to="/" className='menu-item me-2'>Home</Link>
+        <Link to="/about" className='menu-item me-2'>About</Link>
+        <Link to="/gallery" className='menu-item me-2'>Gallery</Link>
       </header>
       <Routes>
         <Route index element={<AppHome/>} />
