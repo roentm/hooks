@@ -10,7 +10,9 @@ export default function AppHome() {
 
   const [movieArr,setMovieArr]=useState([]);
 
-  useEffect(()=>{},[]);
+  useEffect(()=>{
+    doAPI("s=horror");
+  },[]);
   
   const doAPI=async(_searchQ)=>{
     try{
