@@ -4,6 +4,7 @@ import AppHome from './comps/appHome';
 import VodInput from './comps/vodInput';
 import Footer from './comps/footer';
 import './App.css';
+import AppVodInfo from './comps/appVodInfo';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <VodInput/>
       <Routes>
         <Route index element={<AppHome/>}/>
+        <Route path="/info/:id" element={<AppVodInfo/>}/>
       </Routes>
       <Footer/>
     </BrowserRouter>
