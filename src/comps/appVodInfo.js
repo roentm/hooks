@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import {useParams,useNavigation, BrowserRouter } from 'react-router-dom'
+import {useParams,useNavigate} from 'react-router-dom'
 import { urlAPI } from '../const';
 
 export default function AppVodInfo() {
     const params= useParams();
     const [movie,setMovie]=useState({});
-    const nav=useNavigation();
+    const nav=useNavigate();
 
     useEffect(()=>{
         doAPI();
