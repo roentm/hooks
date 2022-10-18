@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, {useRef} from 'react'
 import {useNavigate} from 'react-router-dom'
 
 export default function VodInput(props) {
@@ -18,7 +18,7 @@ export default function VodInput(props) {
                     <h2 className='text-white'>My VoD</h2>
                 </div>
                 <nav className='d-flex col-md-4'>
-                    <input ref={inputRef} placeholder='Search...' type='search' className='form-control' />
+                    <input ref={inputRef} placeholder='Search...' type='search' className='form-control'/>
                     <button className='btn btn-warning ms-1' onClick={onSearchClick}>Search</button>
                 </nav>
             </div>
