@@ -1,9 +1,10 @@
 import './App.css';
+import AppTasks from './comps/appTasks';
 
 function App() {
   return (
     <div className="App">
-     <h1 className='display-4'>React</h1>
+     <AppTasks/>
     </div>
   );
 }
