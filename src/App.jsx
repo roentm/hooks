@@ -1,18 +1,8 @@
 import './App.css';
-import Counter from './components/Counter';
-import From from './components/form/From';
-import FormHook from './components/reactHookForm/formHook';
-import Toglle from './components/Toggle';
-
+import AppRoutes from './routers/appRoutes';
 function App() {
   return (
-    <div >
-      {/* <Counter/>
-      <Toglle/>
-      <From/> */}
-
-      <FormHook/>
-    </div>
+ <AppRoutes/>
   );
 }
 

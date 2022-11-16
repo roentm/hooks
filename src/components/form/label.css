@@ -1,0 +1,11 @@
+.myLabel {
+    color: rgb(18, 16, 16);
+    font-size: 20px;
+    font-family: fantasy;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.myLabel:hover {
+    color: blue;
+}

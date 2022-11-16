@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
 import { useForm } from "react-hook-form";
-
 const FormHook = () => {
     const { register, getValues, handleSubmit, formState: { errors } } = useForm();
     const onSub = (data) => {
+        delete data.confirmPassword
         console.log(data);
     }
 
     console.log(errors)
     return (
         <div className='d-flex flex-column align-items-center '>
+            <h1 className='display-3 text-center'>Login</h1>
 
             <form onSubmit={handleSubmit(onSub)} className='col-7 col-md-5 col-lg-3 mt-5'>
                 <div>
@@ -37,8 +38,9 @@ const FormHook = () => {
                 </div>
                 <div>
                     <label className='myLabel'>Confirm Password:</label>
-                    <input {...register('confirmPassword', { required:true,validate:(value)=>{return value==getValues('password')} })} className='myInput' />
+                    <input type={'password'} {...register('confirmPassword', { required: { value: true, message: 'Confirm password required...' }, validate: { validate:( (value) => value === getValues('password')) } })} className='myInput' />
                     {errors.confirmPassword && errors.confirmPassword.type == 'required' && <small className='error'>{errors?.confirmPassword?.message}</small>}
+                    {errors.confirmPassword && errors.confirmPassword.type == 'validate' && <small className='error'>Password isn't match</small>}
                 </div>
                 <div>
                     <label className='myLabel'>Phone:</label>

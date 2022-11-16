@@ -1,0 +1,37 @@
+.myContainer {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+.form {
+    max-width: 500px;
+    min-height: 500px;
+    margin: 0 auto;
+    border: 1px solid black;
+    margin-top: 50px;
+    padding: 12px;
+}
+
+.error {
+    color: red;
+}
+
+.myLabel {
+    color: rgb(18, 16, 16);
+    font-size: 20px;
+    font-family: fantasy;
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.myLabel:hover {
+    color: blue;
+}
+
+.myInput {
+    width: 100%;
+    outline: none;
+    border-radius: 12px;
+    padding: 4px 8px;
+    border: 2px solid grey;
+}

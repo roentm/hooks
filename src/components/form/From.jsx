@@ -1,12 +1,12 @@
 import { forEach } from 'lodash'
 import React, { useEffect, useState } from 'react'
-import "./form.css"
 import Input from './Input'
 import Label from './Label'
 const From = () => {
     const [from, setForm] = useState({ firstName: "", lastName: "", email: "", phone: "" })
     const [errors, setErrors] = useState({})
     const [runValid, setRunValid] = useState(false);
+
     const updateForm = (value, objectKey) => {
         setForm({ ...from, [objectKey]: value })
     }
@@ -32,6 +32,7 @@ const From = () => {
     }
     return (
         <div className='container'>
+            <h1 className='display-3 text-center'>My Form</h1>
             <form className='form'>
                 <Label value="first name" />
                 <Input objKey="firstName" updateForm={updateForm} ph={"please enter a first name"} />
@@ -44,12 +45,13 @@ const From = () => {
                 {errors.email && <small className='error'> {errors.email}</small>}
                 <Label value="phone" />
                 <Input objKey="phone" updateForm={updateForm} ph="please enter a phone number" />
-                <button onClick={(e) => {
+                <button  onClick={(e) => {
                     e.preventDefault();
                     validate();
                     console.log(errors)
-                    if (errors == {})
+                    if (!(errors.firstName || errors.lastName || errors.email)){
                         console.log(from)
+                    }
 
                 }} style={{ fontSize: '17px' }} className='btn btn-info badge p-2 mt-3'>Submit</button>
             </form>
