@@ -44,7 +44,7 @@ const FormHook = () => {
                 </div>
                 <div>
                     <label className='myLabel'>Date of Birth:</label>
-                    <input type={'date'} {...register('dob', {required: {value: true, message: 'Your date of birth is required!'}, validate: ageCheck})} className='myInput'/>
+                    <input type={'date'} {...register('dob', {required: {value: true, message: 'Your date of birth is required!'}, validate: ageCheck})} className='myInput' placeholder='Enter your Birthdate' />
                     {errors.dob && errors.dob.type=='required' && <small className='error'>{errors?.dob?.message}</small>}
                     {errors.dob && errors.dob.type== 'validate' && <small className='error'>You must be 18 years old or older to sign up!</small>}
                 </div>
