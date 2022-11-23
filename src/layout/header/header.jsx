@@ -7,7 +7,7 @@ const Header = () => {
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
-                        <Link className="nav-link active" to={'/'}>ReactHookForm</Link>
+                        <Link className="nav-link active" to={'/'}>Start React</Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
