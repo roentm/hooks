@@ -1,13 +1,10 @@
-import React from 'react'
-import './App.css'
-import AppRoutes from './routers/appRoutes'
+import './App.css';
+import AppRoutes from './routers/appRoutes';
 
-const App = () => {
+function App() {
   return (
-    <>
     <AppRoutes/>
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
