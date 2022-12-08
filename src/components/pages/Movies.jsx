@@ -3,7 +3,7 @@ import { useState } from 'react'
 import PageCounter from './movies/pageCounter'
 
 const Movies = () => {
-  const [pages,setPages]=useState(49);
+  const [pages]=useState(49);
 
   return (
     <>
