@@ -7,7 +7,7 @@ const PageCounter = (props) => {
     const [numbers,setNumbers]= useState([]);
     useEffect(()=>{
       const series=[];
-      for (let i=0;i<pages;i){
+      for (let i=0;i<pages;i++){
         series.push(i+1);
       }
       setNumbers(series);
