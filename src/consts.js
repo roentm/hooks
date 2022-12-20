@@ -1,1 +1,1 @@
-export const apiKey='2be62b1';
+export const apiURL='https://www.omdbapi.com/?apikey=2be62b1&';
