@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { apiURL } from '../../consts';
 import PageCounter from './movies/pageCounter'
+import YearPicker from './movies/yearPicker';
 
 
 const Movies = () => {
@@ -12,7 +13,11 @@ const Movies = () => {
   const [page,setPage] = useState();
   const [year,setYear]=useState();
   const [movies,setMovies] = useState([]);
-  const [querys]=useSearchParams();
+  const [querys,setQuerys]=useSearchParams();
+
+  const pickYear=(_year) =>{
+    setQuerys()
+  }
 
   
 
@@ -31,14 +36,12 @@ const Movies = () => {
     }
   };
 
-  useEffect(()=>{
-    let searchQ=querys.get("s")||"bank";
-    doAPI(searchQ)},[querys]);
-  
-
+  useEffect(()=>{let searchQ=querys.get("s")||"bank";doAPI(searchQ)},[querys]);
+    
   return (
     <>
     <PageCounter pages={pages}/>
+    <YearPicker />
     </>
   )
 }
