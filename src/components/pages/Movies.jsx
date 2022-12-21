@@ -13,35 +13,35 @@ const Movies = () => {
   const [movies,setMovies] = useState([]);
   const [querys,setQuerys]=useSearchParams();
 
-  const pickYear=(_year) =>{
-    setQuerys({year:_year, page:'1'});
-  }
-  const pickPage=(_page)=>{
-    setQuerys({page:_page});
-  }
+  const pickYear=(_year) =>{setQuerys({year:_year, page:'1'})}
+  const pickPage=(_page)=>{setQuerys({page:_page})}
 
 
   const doAPI= async (_searchQ) => {
     let data=[];
     try{
-      const res=await axios.get(apiURL+'s='+_searchQ);
+      const yearQ=(querys.get('year'))?`&y=${querys.get('year')}`:``;
+      const res=await axios.get(apiURL+'s='+_searchQ+'&page='+querys.get('page')+yearQ);
       data=await res.data;
       let results=await data.Search;
       let pageCount= Math.ceil(data.totalResults/10);
       setMovies(results);
       setPages(pageCount);
+      console.log(results)
     }
     catch(err){
       console.log(err);
     }
   };
 
-  useEffect(()=>{let searchQ=querys.get("s")||"bank";doAPI(searchQ)},[querys]);
+  useEffect(()=>{
+    const searchQ=querys.get("s")||"bank";
+    doAPI(searchQ)},[querys]);
     
   return (
     <>
-    <PageCounter pages={pages} pickpage={pickPage}/>
-    <YearPicker pickyear={pickYear} />
+    <PageCounter pages={pages} pickPage={pickPage}/>
+    <YearPicker pickYear={pickYear} />
     </>
   )
 }

@@ -2,8 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
-const PageCounter = ({pages,pickPage}) => {
+const PageCounter = (props) => {
     const [numbers,setNumbers]= useState([]);
+    const {pages,pickPage}=props;
     useEffect(()=>{
       const series=[];
       for (let i=0;i<pages;i++){
@@ -16,7 +17,7 @@ const PageCounter = ({pages,pickPage}) => {
     <div className="container">
         <select onChange={(e)=>{pickPage(e.target.value)}}>
           {numbers.map((num,i)=>(
-            <option key={i}>{num}</option>
+            <option key={i} value={num}>{num}</option>
           ))}
         </select>
     </div>
