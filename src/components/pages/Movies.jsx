@@ -10,16 +10,16 @@ import YearPicker from './movies/yearPicker';
 
 const Movies = () => {
   const [pages,setPages]=useState(0);
-  const [page,setPage] = useState();
-  const [year,setYear]=useState();
   const [movies,setMovies] = useState([]);
   const [querys,setQuerys]=useSearchParams();
 
   const pickYear=(_year) =>{
-    setQuerys()
+    setQuerys({year:_year, page:'1'});
+  }
+  const pickPage=(_page)=>{
+    setQuerys({page:_page});
   }
 
-  
 
   const doAPI= async (_searchQ) => {
     let data=[];
@@ -40,8 +40,8 @@ const Movies = () => {
     
   return (
     <>
-    <PageCounter pages={pages}/>
-    <YearPicker />
+    <PageCounter pages={pages} pickpage={pickPage}/>
+    <YearPicker pickyear={pickYear} />
     </>
   )
 }
