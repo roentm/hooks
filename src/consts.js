@@ -35,4 +35,4 @@ export const images=[
         img:'../public/imgs/7.jpg',
         omdbID:'tt5776858'
     }
-]
+];
