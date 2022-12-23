@@ -1,16 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import ImageSlider from './slider/ImageSlider'
-import { images } from '../../consts'
 import './header.css'
 
 const Header = () => {
     return (
-        <div className="container-fluid bg-dark">
-            <div className='sliderWrap'>
-            <ImageSlider images={images} />
-            </div>
-            
+        <div className="container-fluid bg-dark">            
             <div className="container">
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div className="container-fluid">
