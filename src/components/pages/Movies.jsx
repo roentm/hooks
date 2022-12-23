@@ -16,7 +16,7 @@ const Movies = () => {
 
   const pickYear=(_year) =>{setQuerys({s:querys.get("s"),year:_year, page:'1'})}
   const pickPage=(_page)=>{setQuerys({s:querys.get("s"),page:_page,year:querys.get("year")||null})}
-  const searchInput=(_input)=>{setQuerys({s:_input,page:'1'})}
+  const searchInput=(_input)=>{if(_input.length<3){return}else{setQuerys({s:_input,page:'1'})}}
 
 
   const doAPI= async (_searchQ) => {
@@ -40,11 +40,27 @@ const Movies = () => {
     const searchQ=querys.get("s")||"bank";
     doAPI(searchQ)},[querys]);
     
+    const posterStyle={
+      width:'100%',
+    }
   return (
     <>
     <PageCounter pages={pages} pickPage={pickPage}/>
     <YearPicker pickYear={pickYear} />
     <SearchBar searchInput={searchInput}/>
+    <div className='container'>
+      <div className='row'>
+        {movies.map(movie =>(
+            <div key={movie.imdbID} className='col-md-4 col-sm-12 box shadow d-flex justify-content-between my-4'>
+              <div className='col-6'>
+                <img src={movie.Poster} alt='' style={posterStyle} className='align-self-start'/>
+              </div>
+            </div>
+        ))}
+       
+      </div>
+
+    </div>
     </>
   )
 }
