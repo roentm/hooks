@@ -8,8 +8,8 @@ import HeaderSlider from './headerSlider/HeaderSlider'
 const Layout = () => {
   return (
     <>
-        <HeaderSlider/>
-        {/* <Header/>  */}
+        {/* <HeaderSlider/> */}
+        <Header/>
         <Outlet/>
         <Footer/>
     </>

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { apiURL } from '../../consts';
 import PageCounter from './movies/pageCounter'
+import SearchBar from './movies/SearchBar';
 import YearPicker from './movies/yearPicker';
 
 
@@ -13,8 +14,9 @@ const Movies = () => {
   const [movies,setMovies] = useState([]);
   const [querys,setQuerys]=useSearchParams();
 
-  const pickYear=(_year) =>{setQuerys({year:_year, page:'1'})}
-  const pickPage=(_page)=>{setQuerys({page:_page})}
+  const pickYear=(_year) =>{setQuerys({s:querys.get("s"),year:_year, page:'1'})}
+  const pickPage=(_page)=>{setQuerys({s:querys.get("s"),page:_page,year:querys.get("year")||null})}
+  const searchInput=(_input)=>{setQuerys({s:_input,page:'1'})}
 
 
   const doAPI= async (_searchQ) => {
@@ -42,6 +44,7 @@ const Movies = () => {
     <>
     <PageCounter pages={pages} pickPage={pickPage}/>
     <YearPicker pickYear={pickYear} />
+    <SearchBar searchInput={searchInput}/>
     </>
   )
 }
