@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React from 'react'
+import React, { Suspense } from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
@@ -48,6 +48,7 @@ const Movies = () => {
     <PageCounter pages={pages} pickPage={pickPage}/>
     <YearPicker pickYear={pickYear} />
     <SearchBar searchInput={searchInput}/>
+    <Suspense fallback={<div>Loading...</div>}>
     <div className='container'>
       <div className='row'>
         {movies.map(movie =>(
@@ -61,6 +62,9 @@ const Movies = () => {
       </div>
 
     </div>
+
+    </Suspense>
+    
     </>
   )
 }
