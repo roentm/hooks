@@ -5,13 +5,28 @@ import { useState } from 'react'
 const SearchBar = ({searchInput}) => {
     const [input,setInput]= useState('');
 
-    useEffect(()=>{
-        searchInput(input);
-    },[input])
+    const handleKeydown = (e) => {
+      if (e.key==='enter') {
+        e.preventDefault();
+        e.target.form(new e('submit',{cancelble: true}))
+      }
+    }
+    const handleSubmit=(e)=>{
+      e.preventDefault();
+      searchInput(input);
+    }
+
   return (
     <div className='container'>
         <div className='col-4'>
-            <input placeholder='Search Movies and shows...' onChange={(e)=>setInput(e.target.value)} className='form form-control' />
+            <form onSubmit={handleSubmit}>
+              <input placeholder='Search Movies and shows...' value={input}
+              onChange={(e)=>{setInput(e.target.value)}}
+              onKeyDown={handleKeydown} 
+              className='form form-control' />
+              <button type='submit'>send</button>
+            </form>
+            
         </div>
         
     </div>
