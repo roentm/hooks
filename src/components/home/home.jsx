@@ -1,8 +1,9 @@
 import React from 'react'
+import Movies from '../pages/Movies'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <Movies/>
   )
 }
 

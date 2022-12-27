@@ -45,16 +45,19 @@ const Movies = () => {
     }
   return (
     <>
-    <PageCounter pages={pages} pickPage={pickPage}/>
-    <YearPicker pickYear={pickYear} />
     <SearchBar searchInput={searchInput}/>
+    <YearPicker pickYear={pickYear} />
+    <PageCounter pages={pages} pickPage={pickPage}/>
     <Suspense fallback={<div>Loading...</div>}>
     <div className='container'>
       <div className='row'>
         {movies.map(movie =>(
-            <div key={movie.imdbID} className='col-md-4 col-sm-12 box shadow d-flex justify-content-between my-4'>
-              <div className='col-6'>
-                <img src={movie.Poster} alt='' style={posterStyle} className='align-self-start'/>
+            <div key={movie.imdbID} className='col-md-4 p-2'>
+              <div className='border p-2 h-100 overflow-hidden shadow position-relative'>
+                <img src={movie.Poster} className='float-start me-2 w-25' />
+                <h3>{movie.Title}</h3>
+                <div>Year: {movie.Year}</div>
+                <button className='btn btn-dark position-absolute bottom-0 end-0' >More Info</button>
               </div>
             </div>
         ))}
