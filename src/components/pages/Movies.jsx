@@ -13,6 +13,7 @@ const Movies = () => {
   const [pages,setPages]=useState(0);
   const [movies,setMovies] = useState([]);
   const [querys,setQuerys]=useSearchParams();
+  const [loading,setLoading] = useState(true);
 
   const pickYear=(_year) =>{setQuerys({s:querys.get("s"),year:_year, page:'1'})}
   const pickPage=(_page)=>{setQuerys({s:querys.get("s"),page:_page,year:querys.get("year")||null})}
@@ -20,16 +21,19 @@ const Movies = () => {
 
 
   const doAPI= async (_searchQ) => {
-    let data=[];
+   
     try{
+      setLoading(true);
+      setMovies([]);
       const yearQ=(querys.get('year'))?`&y=${querys.get('year')}`:``;
-      const res=await axios.get(apiURL+'s='+_searchQ+'&page='+querys.get('page')+yearQ);
-      data=await res.data;
-      let results=await data.Search;
+      const {data}=await axios.get(apiURL+'s='+_searchQ+'&page='+querys.get('page')+yearQ);
+      const seraching = data.Search;
+    
       let pageCount= Math.ceil(data.totalResults/10);
-      setMovies(results);
+      setMovies(seraching);
       setPages(pageCount);
-      console.log(results)
+      console.log(seraching)
+      setLoading(false);
     }
     catch(err){
       console.log(err);
@@ -48,10 +52,14 @@ const Movies = () => {
     <SearchBar searchInput={searchInput}/>
     <YearPicker pickYear={pickYear} />
     <PageCounter pages={pages} pickPage={pickPage}/>
-    <Suspense fallback={<div>Loading...</div>}>
+
+
     <div className='container'>
+      {loading && movies.length ? <p>Loading...</p>:
       <div className='row'>
-        {movies.map(movie =>(
+
+        
+        {movies?.map(movie =>(
             <div key={movie.imdbID} className='col-md-4 p-2'>
               <div className='border p-2 h-100 overflow-hidden shadow position-relative'>
                 <img src={movie.Poster} className='float-start me-2 w-25' />
@@ -62,11 +70,10 @@ const Movies = () => {
             </div>
         ))}
        
-      </div>
+      </div>}
 
     </div>
 
-    </Suspense>
     
     </>
   )
