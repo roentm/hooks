@@ -59,3 +59,6 @@ body{
     font-size: 45px;
     font-size: 9.5vw;
     }
+.footerstrip, .push{
+    height: 50px;
+}

@@ -41,7 +41,6 @@ const Movies = () => {
       let pageCount= Math.ceil(data.totalResults/10);
       setMovies(seraching);
       setPages(pageCount);
-      console.log(seraching)
       setLoading(false);
     }
     catch(err){
@@ -70,7 +69,7 @@ const Movies = () => {
       <div className='row'>
 
         
-        {movies?.map(movie => (<Movie movie={movie}/>))}
+        {movies?.map(movie => (<Movie key={movie.imdbID} movie={movie}/>))}
         {!movies && <p>No results found</p>}
        
       </div>}
@@ -81,7 +80,7 @@ const Movies = () => {
     {(querys.get("page")<pages)&&
     <button className='btn btn-dark position-absolute top-50 end-0 fs-1 text-light me-4 btnHover d-none d-sm-none d-md-block' onClick={nextPage} title='To Next Page'>❱</button>}
 
-    
+    <div className='push'></div>
     </>
   )
 }

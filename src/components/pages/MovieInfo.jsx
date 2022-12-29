@@ -8,25 +8,24 @@ import StarRating from "./movieInfo/StarRating";
 const MovieInfo = () => {
   const params = useParams();
   const [movie, setMovie] = useState({});
-  const [loading, setLoading] = useState(true);
   const nav = useNavigate();
-
-  useEffect(() => {
-    doAPI();
-  }, []);
-
-  const doAPI = async () => {
+  
+  const doAPI = useCallback( async () => {
     try {
-      setLoading(true);
       setMovie({});
       const sID = params["id"];
       const { data } = await axios.get(apiURL + "i=" + sID);
       setMovie(data);
-      setLoading(false);
     } catch (err) {
       console.log(err);
     }
-  };
+  },[params])
+  
+  useEffect(() => {
+    doAPI();
+  },[doAPI]);
+
+ 
   return (
     <div className="container-fluid d-flex">
       <div className="container bg-dark text-light d-flex pt-5 flex-wrap shadow">

@@ -5,11 +5,11 @@ import HeaderSlider from './headerSlider/HeaderSlider'
 
 const Layout = () => {
   return (
-    <>
+    <div className='relative'>
         <HeaderSlider/>
         <Outlet/>
         <Footer/>
-    </>
+    </div>
     
   )
 }
