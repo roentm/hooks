@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { apiURL } from '../../consts';
@@ -26,9 +26,10 @@ const Movies = () => {
     if(cPage<pages){pickPage(cPage+1)}
   }
   const searchInput=(_input)=>{if(_input.length<3){return}else{setQuerys({s:_input,page:'1'})}}
+  const resetSearch=()=>{setQuerys()};
 
 
-  const doAPI= async (_searchQ) => {
+  const doAPI= useCallback(async (_searchQ) => {
    
     try{
       setLoading(true);
@@ -46,15 +47,15 @@ const Movies = () => {
     catch(err){
       console.log(err);
     }
-  };
+  },[querys])
 
   useEffect(()=>{
     const searchQ=querys.get("s")||"bank";
-    doAPI(searchQ)},[querys]);
+    doAPI(searchQ)},[querys,doAPI]);
     
   return (
     <>
-    <SearchBar searchInput={searchInput}/>
+    <SearchBar searchInput={searchInput} resetSearch={resetSearch}/>
     <div className='container d-flex my-3 flex-wrap'>
       <div className='col-9 col-sm-12'>
         <YearPicker pickYear={pickYear} />

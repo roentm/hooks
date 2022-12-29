@@ -9,8 +9,8 @@ const HeaderSlider = () => {
         height: '280px'
     }
   return (
-    <div className='container-fluid' style={slideWrapStyle}>
-        <Slider images={images}/>
+    <div className='strip' style={slideWrapStyle}>
+        <Slider images={images} parentWidth={100} />
     </div>
   )
 }

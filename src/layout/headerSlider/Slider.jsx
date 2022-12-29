@@ -1,57 +1,43 @@
-import React from 'react'
+import React, { useRef } from 'react'
+import { useCallback } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react'
 
 const Slider = ({images}) => {
     const [curIndex, setCurIndex] = useState(0);
+    const timeRef= useRef(null);
 
-    const slidesStyle={
-        width: "100%",
-        height: "100%",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        backgroundImage: `url(${images[curIndex].img})`
-    };
-    const sliderStyle={
-        height: "100%",
-        position: "relative"
-
-    };
-    const leftArrowStyles={
-      position: "absolute",
-      top: "50%",
-      transform: 'translate(0, -50%)',
-      left: "32px",
-      fontSize: "55px",
-      color: "#fff",
-      zIndex: 1,
-      cursor: "pointer",
-    };
-    const rightArrowStyles={
-      position: "absolute",
-      top: "50%",
-      transform: 'translate(0, -50%)',
-      right: "32px",
-      fontSize: "55px",
-      color: "#fff",
-      zIndex: 1,
-      cursor: "pointer",
-    };
     const goBack=()=>{
       const isFirstSlider= curIndex ===0;
       const newIndext=isFirstSlider?images.length-1:curIndex-1;
       setCurIndex(newIndext)
     }
-    const goForward=()=>{
+    const goForward=useCallback(()=>{
       const islastSlider= curIndex===images.length-1;
       const newIndext=islastSlider?0:curIndex+1;
       setCurIndex(newIndext);
-    };
+    },[curIndex,images.length])
+    
+  
+  
+
+    useEffect(()=>{
+      if(timeRef.current){clearTimeout(timeRef.current)}
+      timeRef.current=setTimeout(()=>{
+        goForward()
+      },3000);
+      return ()=>{clearTimeout(timeRef.current)};
+    },[goForward]);
   return (
-    <div style={sliderStyle}>
-        <div style={leftArrowStyles} onClick={goBack} title='Previous Item'>❰</div>
-        <div style={rightArrowStyles} onClick={goForward} title='Next Item'>❱</div>
-        <div style={slidesStyle}>
+    <div className='sliderStyle'>
+
+      <div className='slidesStyle' style={{backgroundImage: `url(${images[curIndex].img})`}}>
+        <div className='leftArrowStyle' onClick={goBack} title='Previous Item'>❰</div>
+        <div className='rightArrowStyle' onClick={goForward} title='Next Item'>❱</div>
+        <div className='container'>
+          <h1 className='display-3 text-light demotext'>CinemaHoliK</h1>
         </div>
+      </div>
     </div>
   )
 }

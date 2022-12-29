@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const SearchBar = ({searchInput}) => {
+const SearchBar = ({searchInput,resetSearch}) => {
     const [input,setInput]= useState('');
 
     const handleKeydown = (e) => {
@@ -24,6 +24,7 @@ const SearchBar = ({searchInput}) => {
               onKeyDown={handleKeydown} 
               className='form form-control' />
             <button type='submit' className='btn btn-info ms-2 infohover fs-6'>Search</button>
+            <button className='btn btn-danger ms-2 fs-6' onClick={resetSearch}>Reset</button>
           </form>
             
         </div>
