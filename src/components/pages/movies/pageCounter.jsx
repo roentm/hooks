@@ -14,9 +14,9 @@ const PageCounter = (props) => {
       },[pages])
   return (
     <>
-    <div className="container">
-      <label className='me-2'>Pick a Page:</label>
-      <select onChange={(e)=>{pickPage(e.target.value)}}>
+    <div className="container p-2">
+      <label className='me-2 text-light fs-5'>Jump to Page:</label>
+      <select onChange={(e)=>{pickPage(e.target.value)}} className='form border-0 rounded-3 text-light bg-dark p-1 btnHover'>
         {numbers.map((num,i)=>(
             <option key={i} value={num}>{num}</option>
           ))

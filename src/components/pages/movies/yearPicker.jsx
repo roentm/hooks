@@ -17,16 +17,16 @@ const YearPicker = (props) => {
   },[])
   
   return (
-    <div className='container'>
-      <div className='row d-flex'>
+    <div className='container d-flex flex-wrap'>
+      <div className='row d-flex col-md-9'>
         <div>
-          <label className='me-3'>Top Years:</label>
-          {topYears.map(year=><button key={year} value={year} className='btn btn-dark col-1' onClick={(e)=>props.pickYear(e.target.value)}>{year}</button>)}
+          <label className='me-3 text-light fs-5 d-sm-none'>Top Years:</label>
+          {topYears.map(year=><button key={year} value={year} className='btn btn-dark col-md-1 col-sm-12 col-xs-12 me-1 p-2  btnHover' onClick={(e)=>props.pickYear(e.target.value)}>{year}</button>)}
         </div>
       </div>
-      <div>
-        <label className='me-3'>Pick a Year: </label>
-        <select onChange={(e)=>{props.pickYear(e.target.value)}}>
+      <div className='d-flex col-md-3 p-2'>
+        <label className='me-3 text-light fs-5 d-sm-none'>Pick a Year: </label>
+        <select onChange={(e)=>{props.pickYear(e.target.value)}} className='form border-0 rounded-3 text-light bg-dark p-1 btnHover'>
           {years.map((item,i)=>(
             <option key={i} value={item}>{item}</option>
           ))}

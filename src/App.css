@@ -1,0 +1,13 @@
+body{
+    /* background: #28323e; */
+    background: #093142;
+}
+
+.btnHover:hover{
+    background-color: #308163 !important;
+}
+.infohover:hover{
+    background-color: #284564 !important;
+    color: #fff !important;
+    font-style: italic !important;
+}

@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { Suspense } from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
 import { useSearchParams } from 'react-router-dom';
 import { apiURL } from '../../consts';
+import Movie from './movies/Movie';
 import PageCounter from './movies/pageCounter'
 import SearchBar from './movies/SearchBar';
 import YearPicker from './movies/yearPicker';
@@ -17,6 +17,14 @@ const Movies = () => {
 
   const pickYear=(_year) =>{setQuerys({s:querys.get("s"),year:_year, page:'1'})}
   const pickPage=(_page)=>{setQuerys({s:querys.get("s"),page:_page,year:querys.get("year")||null})}
+  const prevPage=()=>{
+    const cPage= Number(querys.get("page"));
+    if(cPage!==1){pickPage(cPage-1)}
+  }
+  const nextPage=()=>{
+    const cPage= Number(querys.get("page"));
+    if(cPage<pages){pickPage(cPage+1)}
+  }
   const searchInput=(_input)=>{if(_input.length<3){return}else{setQuerys({s:_input,page:'1'})}}
 
 
@@ -44,35 +52,33 @@ const Movies = () => {
     const searchQ=querys.get("s")||"bank";
     doAPI(searchQ)},[querys]);
     
-    const posterStyle={
-      width:'100%',
-    }
   return (
     <>
     <SearchBar searchInput={searchInput}/>
-    <YearPicker pickYear={pickYear} />
-    <PageCounter pages={pages} pickPage={pickPage}/>
-
-
-    <div className='container'>
-      {loading && movies.length ? <p>Loading...</p>:
+    <div className='container d-flex my-3 flex-wrap'>
+      <div className='col-9 col-sm-12'>
+        <YearPicker pickYear={pickYear} />
+      </div>
+      <div className='col-3 col-sm-12'>
+        <PageCounter pages={pages} pickPage={pickPage}/>
+      </div>
+      
+    </div>
+    <div className='container position-relative'>
+      {loading?<img src='/imgs/loadingsh.webp' alt='loading' className='w-50 h-50 bottom-50 end-50'/>:
       <div className='row'>
 
         
-        {movies?.map(movie =>(
-            <div key={movie.imdbID} className='col-md-4 p-2'>
-              <div className='border p-2 h-100 overflow-hidden shadow position-relative'>
-                <img src={movie.Poster} className='float-start me-2 w-25' />
-                <h3>{movie.Title}</h3>
-                <div>Year: {movie.Year}</div>
-                <button className='btn btn-dark position-absolute bottom-0 end-0' >More Info</button>
-              </div>
-            </div>
-        ))}
+        {movies?.map(movie => (<Movie movie={movie}/>))}
+        {!movies && <p>No results found</p>}
        
       </div>}
 
     </div>
+    {(querys.get("page")>1) &&
+    <button className='btn btn-dark position-absolute top-50 start-0 fs-1 text-light ms-4 btnHover d-none d-sm-none d-md-block' onClick={prevPage} title='To Previous Page'>❰</button>}
+    {(querys.get("page")<pages)&&
+    <button className='btn btn-dark position-absolute top-50 end-0 fs-1 text-light me-4 btnHover d-none d-sm-none d-md-block' onClick={nextPage} title='To Next Page'>❱</button>}
 
     
     </>

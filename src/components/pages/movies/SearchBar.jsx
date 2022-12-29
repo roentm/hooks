@@ -1,5 +1,4 @@
 import React from 'react'
-import { useEffect } from 'react';
 import { useState } from 'react'
 
 const SearchBar = ({searchInput}) => {
@@ -17,15 +16,15 @@ const SearchBar = ({searchInput}) => {
     }
 
   return (
-    <div className='container'>
-        <div className='col-4'>
-            <form onSubmit={handleSubmit}>
-              <input placeholder='Search Movies and shows...' value={input}
+    <div className='container-fluid bg-dark'>
+        <div className='container p-2 d-flex'>
+          <form onSubmit={handleSubmit} className='d-flex justify-self-start'>
+            <input placeholder='Search Movies and shows...' value={input}
               onChange={(e)=>{setInput(e.target.value)}}
               onKeyDown={handleKeydown} 
               className='form form-control' />
-              <button type='submit'>send</button>
-            </form>
+            <button type='submit' className='btn btn-info ms-2 infohover fs-6'>Search</button>
+          </form>
             
         </div>
         
